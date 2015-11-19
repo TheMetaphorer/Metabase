@@ -1,21 +1,23 @@
 package metabase.types.numbers;
 
 import metabase.exceptions.OverflowError;
-import metabase.types.Object;
+import metabase.types.MetabaseObject;
+import metabase.db.columns.Types;
 import java.lang.String;
 
-public class Double implements Object {
+public class Double implements MetabaseObject {
 
     public double value;
+    public final Types type = Types.Double;
     public Double(double value) throws OverflowError {
-        if (value < -(Math.pow(2, 63)) || value > Math.pow(2, 63) - 1) {
+        if (value < java.lang.Double.MIN_VALUE|| value > java.lang.Double.MAX_VALUE) {
             throw new OverflowError();
         }
         this.value = value;
     }
 
-    public String type() {
-        return "METABASE OBJECT: types.numbers.Double";
+    public Types type() {
+        return type;
     }
 
     public String repr() {

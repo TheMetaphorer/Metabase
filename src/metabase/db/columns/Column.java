@@ -1,52 +1,28 @@
 package metabase.db.columns;
 
+import metabase.db.rows.Row;
 import metabase.exceptions.*;
-import java.lang.Object;
+import metabase.db.columns.Types;
+import metabase.types.MetabaseObject;
+import java.io.Serializable;
 import java.lang.Exception;
 import java.lang.Class;
 import java.util.ArrayList;
 
-public class Column {
+public class Column implements Serializable {
 
     public boolean isNull;
-    public ArrayList<Object> rows = new ArrayList<Object>();
-    public Column(Class columnType, boolean isNull, Object... values) throws NullViolationError {
+    public ArrayList<MetabaseObject> ids = new ArrayList<>();
+    public final Types type;
+    public Column(Types columnType, boolean isNull) throws NullViolationError {
         this.isNull = isNull;
-        rows = new ArrayList<>();
-        if (this.isNull)
-            for (Object value : values) {
-                rows.add(value);
-            }
-
-        if (!this.isNull) {
-            if (rows.size() == 0) {
-                throw new NullViolationError();
-            }
-            else {
-                for (Object value : values) {
-                    rows.add(value);
-                }
-            }
-        }
+        type = columnType;
+        ids = new ArrayList<>();
     }
 
-    public Column(Class columnType) {
+    public Column(Types columnType) {
         isNull = true;
-        rows = new ArrayList<>();
-    }
-    public int updateColumn(int id, Object value) throws NullViolationError {
-        try {
-            if (isNull && value == null) {
-                throw new NullViolationError();
-            }
-            else {
-                rows.set(id, value);
-            }
-            return 0;
-        } catch (Exception e) {
-            System.out.println("Caught Exception: " + e.getMessage());
-            return 1;
-        }
-
+        ids = new ArrayList<>();
+        type = columnType;
     }
 }

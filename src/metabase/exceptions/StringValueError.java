@@ -1,6 +1,6 @@
 package metabase.exceptions;
 
-import metabase.types.Object;
+import metabase.types.MetabaseObject;
 import java.lang.Exception;
 
 public class StringValueError extends Exception {
@@ -8,7 +8,7 @@ public class StringValueError extends Exception {
         super(msg + object);
     }
 
-    public StringValueError(Object object) {
+    public StringValueError(MetabaseObject object) {
         super("StringValueError for " + object.type() +"; invalid value");
     }
 

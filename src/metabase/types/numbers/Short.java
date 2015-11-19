@@ -1,14 +1,15 @@
 package metabase.types.numbers;
 
+import metabase.db.columns.Types;
 import metabase.exceptions.OverflowError;
-import metabase.types.Object;
+import metabase.types.MetabaseObject;
 import java.lang.String;
-import java.lang.Math;
 
-public class Short implements Object {
+public class Short implements MetabaseObject {
     public short value;
+    public final Types type = Types.Short;
     public Short(short value) throws OverflowError {
-        if (value < -(Math.pow(2, 15)) || value > (Math.pow(2, 15)) - 1 ) {
+        if (value < java.lang.Short.MIN_VALUE || value > java.lang.Short.MAX_VALUE ) {
             throw new OverflowError();
         }
 
@@ -16,8 +17,8 @@ public class Short implements Object {
 
     }
 
-    public String type() {
-        return "METABASE OBJECT: types.numbers.Short";
+    public Types type() {
+        return type;
     }
 
     public String repr() {

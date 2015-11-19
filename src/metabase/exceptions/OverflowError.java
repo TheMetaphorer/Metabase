@@ -1,6 +1,6 @@
 package metabase.exceptions;
 
-import metabase.types.Object;
+import metabase.types.MetabaseObject;
 import java.lang.Exception;
 
 public class OverflowError extends Exception {
@@ -8,7 +8,7 @@ public class OverflowError extends Exception {
         super(msg + object);
     }
 
-    public OverflowError(Object object) {
+    public OverflowError(MetabaseObject object) {
         super("OverflowError for " + object.type() +"; value too large");
     }
 

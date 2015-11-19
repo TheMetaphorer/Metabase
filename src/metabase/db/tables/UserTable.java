@@ -1,5 +1,6 @@
 package metabase.db.tables;
 
+import metabase.db.columns.Types;
 import metabase.exceptions.*;
 import metabase.types.numbers.*;
 import metabase.types.strings.SmallString;
@@ -19,12 +20,11 @@ public class UserTable extends Table {
         super(db);
         name = "user_tables";
         ArrayList<Column> columns = new ArrayList<>();
-        Class username = Class.forName("metabase.types.strings.SmallString");
-        Class password = Class.forName("metabase.types.strings.SmallString");
-        Class userKey = Class.forName("metabase.types.strings.BigString");
+        Types username = Types.SmallString;
+        Types password = Types.SmallString;
+        Types userKey = Types.BigString;
         columns.add(new Column(username));
         columns.add(new Column(password));
         columns.add(new Column(userKey));
-        updateRow(0, new Object[]{new SmallString(db.owner.username),new SmallString(db.owner.password), new BigString(db.owner.userKey)});
     }
 }

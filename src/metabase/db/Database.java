@@ -2,19 +2,25 @@ package metabase.db;
 
 import metabase.db.columns.Column;
 import metabase.db.tables.Table;
+import metabase.db.tables.UserTable;
 import metabase.db.user.*;
+import metabase.exceptions.NoSuchTableError;
+
 import java.io.*;
 import java.lang.String;
+import java.lang.Exception;
 import java.util.ArrayList;
 
 public class Database implements Serializable {
 
     public User owner;
     public String name;
-    public ArrayList<Table> tables;
-    public Database(String name, User owner) {
+    public ArrayList<Table> tables = new ArrayList<>();
+    public String path;
+    public Database(String name, String path, User owner) throws Exception {
         this.owner = owner;
         this.name = name;
+        this.path = path;
     }
 
     public static void saveDB(Database db, String path) throws IOException, ClassNotFoundException {
@@ -27,6 +33,18 @@ public class Database implements Serializable {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public Table getTable(String name) throws NoSuchTableError {
+        for (Table table : tables) {
+            if (table.name.equals(name))
+                return table;
+        }
+        throw new NoSuchTableError(name);
+    }
+
+    public ArrayList<Table> getTables() {
+        return tables;
     }
 
     public static Database loadDB(String path) throws IOException, ClassNotFoundException {

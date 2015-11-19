@@ -1,21 +1,23 @@
 package metabase.types.numbers;
 
 import metabase.exceptions.OverflowError;
-import metabase.types.Object;
+import metabase.types.MetabaseObject;
+import metabase.db.columns.Types;
 import java.lang.String;
 
-public class Float implements Object {
+public class Float implements MetabaseObject {
 
     public float value;
+    public final Types type = Types.Float;
     public Float(float value) throws OverflowError {
-        if (value < -(Math.pow(2, 31)) || value > Math.pow(2, 31) - 1) {
+        if (value < java.lang.Float.MIN_VALUE || value > java.lang.Float.MAX_VALUE) {
             throw new OverflowError();
         }
         this.value = value;
     }
 
-    public String type() {
-        return "METABASE OBJECT: types.numbers.Float";
+    public Types type() {
+        return type;
     }
 
     public String repr() {

@@ -1,12 +1,14 @@
 package metabase.types.strings;
 
+import metabase.db.columns.Types;
 import metabase.exceptions.*;
-import metabase.types.Object;
+import metabase.types.MetabaseObject;
 import java.lang.String;
 
-public class Text implements Object {
+public class Text implements MetabaseObject {
 
     public char[] value;
+    public final Types type = Types.Text;
     public Text(int size, String value) throws StringValueError {
         this.value = new char[size];
         if (value.length() > size)
@@ -18,8 +20,8 @@ public class Text implements Object {
         }
     }
 
-    public String type() {
-        return "METABASE OBJECT: types.strings.Object";
+    public Types type() {
+        return type;
     }
 
     public String repr() {

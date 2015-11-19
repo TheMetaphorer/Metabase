@@ -1,12 +1,14 @@
 package metabase.types.strings;
 
+import metabase.db.columns.Types;
 import metabase.exceptions.*;
-import metabase.types.Object;
+import metabase.types.MetabaseObject;
 import java.lang.String;
 
-public class BigString implements Object {
+public class BigString implements MetabaseObject {
 
     public char[] value = new char[64];
+    public final Types type = Types.BigString;
     public BigString(String value) throws StringValueError {
         if (value.length() > 64)
             throw new StringValueError("Value entered was too big for BigString, must be at most be 64");
@@ -17,8 +19,8 @@ public class BigString implements Object {
         }
     }
 
-    public String type() {
-        return "METABASE OBJECT: types.strings.BigString";
+    public Types type() {
+        return type;
     }
 
     public String repr() {

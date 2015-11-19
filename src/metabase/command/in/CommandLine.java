@@ -15,7 +15,7 @@ public class CommandLine {
     public static String db;
     public static String username;
     public static String password;
-    public static void listen() throws IOException, ClassNotFoundException, NoSuchAlgorithmException, AuthenticationError {
+    public static void listen() throws Exception {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Have you created a database? [Y/N]");
         if (scanner.nextLine().toLowerCase().equals(new String("n"))) {
@@ -32,9 +32,12 @@ public class CommandLine {
             password = scanner.nextLine();
         }
         ManagementSystem mng = new ManagementSystem(db, username, password);
+        int in = 0;
         while (true) {
             System.out.print(mng.db.name + " >>>");
             input = scanner.nextLine();
+            mng.parseCommand(input, in);
+            in++;
         }
     }
 }
