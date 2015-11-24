@@ -10,7 +10,7 @@
 
     <groupId>ga.dore</groupId>
     <artifactId>Metabase</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0-alpha</version>
 
     <build>
         <plugins>
@@ -46,7 +46,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <doCheck>true</doCheck>
+                    <format>{0}</format>
+                    <items>
+                        <item implementation="java.lang.Integer">1</item>
+                    </items>
                     <doUpdate>true</doUpdate>
                 </configuration>
             </plugin>

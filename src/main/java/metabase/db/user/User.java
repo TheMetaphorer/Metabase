@@ -1,9 +1,9 @@
 package metabase.db.user;
 
 import metabase.db.user.permissions.UserPermission;
-import java.lang.String;
-import java.security.MessageDigest;
+
 import java.io.Serializable;
+import java.security.MessageDigest;
 
 public class User implements Serializable {
 

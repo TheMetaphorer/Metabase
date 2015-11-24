@@ -1,7 +1,6 @@
 package metabase.exceptions;
 
 import metabase.db.user.User;
-import java.lang.Exception;
 
 public class AuthenticationError extends Exception {
     public AuthenticationError(User user) {

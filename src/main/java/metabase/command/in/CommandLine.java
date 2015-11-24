@@ -1,14 +1,9 @@
 package metabase.command.in;
 
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
-import java.lang.System;
-
 import metabase.db.Database;
-import metabase.db.user.User;
-import metabase.exceptions.AuthenticationError;
 import metabase.management.ManagementSystem;
+
+import java.util.Scanner;
 
 public class CommandLine {
     public static String input;

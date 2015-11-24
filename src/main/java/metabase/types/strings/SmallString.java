@@ -1,9 +1,8 @@
 package metabase.types.strings;
 
 import metabase.db.columns.Types;
-import metabase.exceptions.*;
+import metabase.exceptions.StringValueError;
 import metabase.types.MetabaseObject;
-import java.lang.String;
 
 public class SmallString implements MetabaseObject {
 

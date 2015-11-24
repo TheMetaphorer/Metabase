@@ -1,12 +1,9 @@
 package metabase.db.columns;
 
-import metabase.db.rows.Row;
-import metabase.exceptions.*;
-import metabase.db.columns.Types;
+import metabase.exceptions.NullViolationError;
 import metabase.types.MetabaseObject;
+
 import java.io.Serializable;
-import java.lang.Exception;
-import java.lang.Class;
 import java.util.ArrayList;
 import java.util.List;
 

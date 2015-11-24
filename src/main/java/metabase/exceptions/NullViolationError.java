@@ -1,7 +1,5 @@
 package metabase.exceptions;
 
-import java.lang.Exception;
-
 public class NullViolationError extends Exception {
 
     public NullViolationError(String msg) {

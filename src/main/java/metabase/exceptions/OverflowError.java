@@ -1,7 +1,6 @@
 package metabase.exceptions;
 
 import metabase.types.MetabaseObject;
-import java.lang.Exception;
 
 public class OverflowError extends Exception {
     public OverflowError(String msg, String object) {

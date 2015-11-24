@@ -1,7 +1,5 @@
 package metabase.exceptions;
 
-import java.lang.Exception;
-
 public class MismatchedColumnError extends Exception {
 
     public MismatchedColumnError() {

@@ -3,7 +3,6 @@ package metabase.types.numbers;
 import metabase.db.columns.Types;
 import metabase.exceptions.OverflowError;
 import metabase.types.MetabaseObject;
-import java.lang.String;
 
 public class Int implements MetabaseObject {
 

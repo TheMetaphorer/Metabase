@@ -2,7 +2,6 @@ package metabase.types.strings;
 
 import metabase.db.columns.Types;
 import metabase.types.MetabaseObject;
-import java.lang.String;
 
 public class Char implements MetabaseObject {
 

@@ -1,16 +1,17 @@
 package metabase.management;
 
+import metabase.db.Database;
 import metabase.db.columns.Column;
 import metabase.db.columns.Types;
-import metabase.db.user.Superuser;
-import metabase.db.user.User;
-import metabase.db.Database;
 import metabase.db.tables.Table;
-import metabase.exceptions.*;
+import metabase.db.user.Superuser;
+import metabase.exceptions.AuthenticationError;
+import metabase.exceptions.ColumnTypeViolationError;
+import metabase.exceptions.MismatchedColumnError;
 import metabase.types.MetabaseObject;
-import metabase.types.numbers.*;
 import metabase.types.numbers.Double;
 import metabase.types.numbers.Float;
+import metabase.types.numbers.*;
 import metabase.types.numbers.Long;
 import metabase.types.numbers.Short;
 import metabase.types.strings.BigString;
@@ -21,7 +22,6 @@ import metabase.types.strings.Text;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.Class;
 import java.util.*;
 
 public class ManagementSystem {
@@ -66,8 +66,6 @@ public class ManagementSystem {
                 args.add(arg);
             }
         }
-        System.out.println(args.get(0) + "f");
-        System.out.println(args.get(1) + "s");
         if (!args.isEmpty()) {
             Method method = this.getClass().getMethod(commandName, List.class);
             method.invoke(this, args);

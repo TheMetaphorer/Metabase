@@ -9,5 +9,5 @@ public enum Types {
     BigString,
     Char,
     SmallString,
-    Text;
+    Text
 }

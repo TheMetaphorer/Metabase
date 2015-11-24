@@ -1,14 +1,10 @@
 package metabase.db;
 
-import metabase.db.columns.Column;
 import metabase.db.tables.Table;
-import metabase.db.tables.UserTable;
-import metabase.db.user.*;
+import metabase.db.user.User;
 import metabase.exceptions.NoSuchTableError;
 
 import java.io.*;
-import java.lang.String;
-import java.lang.Exception;
 import java.util.ArrayList;
 
 public class Database implements Serializable {

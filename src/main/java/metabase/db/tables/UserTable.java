@@ -1,18 +1,10 @@
 package metabase.db.tables;
 
-import metabase.db.columns.Types;
-import metabase.exceptions.*;
-import metabase.types.numbers.*;
-import metabase.types.strings.SmallString;
-import metabase.types.strings.BigString;
-import metabase.db.columns.Column;
-import metabase.db.tables.Table;
 import metabase.db.Database;
-import java.lang.Class;
-import java.lang.ClassNotFoundException;
-import java.lang.String;
+import metabase.db.columns.Column;
+import metabase.db.columns.Types;
+
 import java.util.ArrayList;
-import java.lang.Object;
 
 public class UserTable extends Table {
 

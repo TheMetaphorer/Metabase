@@ -1,16 +1,13 @@
 package metabase.db.tables;
 
+import metabase.db.Database;
+import metabase.db.columns.Column;
 import metabase.db.columns.Types;
 import metabase.db.rows.Row;
-import metabase.exceptions.ColumnTypeViolationError;
-import metabase.exceptions.MismatchedColumnError;
 import metabase.exceptions.NoSuchTypeError;
 import metabase.types.MetabaseObject;
-import metabase.db.columns.Column;
-import metabase.db.Database;
 
 import java.io.Serializable;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
