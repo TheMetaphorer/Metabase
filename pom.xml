@@ -10,9 +10,12 @@
 
     <groupId>ga.dore</groupId>
     <artifactId>Metabase</artifactId>
-    <version>0.1.0-alpha</version>
-
+    <version>0.1.4-alpha</version>
+    <properties>
+        <buildDirectory>${project.basedir}/Metabase builds/${project.version}/${project.build.finalName}</buildDirectory>
+    </properties>
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -46,15 +49,16 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <format>{0}</format>
+                    <format>{0,number}</format>
                     <items>
-                        <item implementation="java.lang.Integer">1</item>
+                        <item>buildNumber0</item>
                     </items>
                     <doUpdate>true</doUpdate>
                 </configuration>
             </plugin>
         </plugins>
         <finalName>${project.artifactId}-${project.version}-r${buildNumber}</finalName>
+        <directory>${buildDirectory}</directory>
     </build>
 
 </project>

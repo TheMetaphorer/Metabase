@@ -20,6 +20,7 @@ import metabase.types.strings.SmallString;
 import metabase.types.strings.Text;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -53,11 +54,13 @@ public class ManagementSystem {
 
     }
 
-    public void parseCommand(String command, int line) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    public void parseCommand(String command) throws Exception {
         String commandName = command.split("\\|")[0];
         System.out.println(commandName);
-        if (command.toLowerCase().equals("q"))
+        if (command.toLowerCase().equals("q")) {
+            Database.saveDB(db, db.path);
             System.exit(0);
+        }
         List<String> args = new ArrayList<>();
         for (String arg : command.split("\\|")) {
             if (arg.equals(commandName))
@@ -94,15 +97,14 @@ public class ManagementSystem {
         if (!(args.get(1).split("\\,").length == table.columns.size())) {
             throw new MismatchedColumnError();
         } else {
-            Object[] values = new MetabaseObject[table.columns.size()];
+            MetabaseObject[] values = new MetabaseObject[table.columns.size()];
             for (Column column : table.columns) {
                 int index = table.columns.indexOf(column);
-                values[index] = ObjectManager.get(table.columns.get(0).type).asSubclass(ObjectManager.get(table.columns.get(0).type)).getConstructor(String.class).newInstance(vals[index]);
-                MetabaseObject[] vals_ = (MetabaseObject[])values;
-                if (Arrays.asList(vals_).get(index).type().equals(column.type))
+                values[index] = (MetabaseObject)ObjectManager.get(table.columns.get(index).type).getConstructor(String.class).newInstance(vals[index]);
+                if (!Arrays.asList(values).get(index).type().equals(column.type))
                     throw new ColumnTypeViolationError(column);
                 else {
-                    column.ids.add(vals_[index]);
+                    column.ids.add(values[index]);
                 }
             }
         }
@@ -110,8 +112,16 @@ public class ManagementSystem {
 
     public void getTables() {
         for (Table table : db.getTables()) {
-            System.out.println(table.name);
+            System.out.print(table.name + ";");
+            for (Column column : table.columns) {
+                System.out.print(column.type.toString() + ", ");
+            }
+            System.out.println();
         }
+    }
+
+    public void save() throws Exception {
+        Database.saveDB(db, db.path);
     }
 
 

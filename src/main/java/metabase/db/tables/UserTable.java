@@ -11,7 +11,7 @@ public class UserTable extends Table {
     public UserTable(Database db) throws Exception {
         super(db);
         name = "user_tables";
-        ArrayList<Column> columns = new ArrayList<>();
+        columns = new ArrayList<>();
         Types username = Types.SmallString;
         Types password = Types.SmallString;
         Types userKey = Types.BigString;

@@ -14,7 +14,6 @@ import java.util.List;
 
 public class Table implements Serializable {
     public List<Column> columns = new ArrayList<>();
-    public List<Row> rows = new ArrayList<>();
     public String name;
     public Table(String[] columnTypes, String name) throws Exception {
         this.name = name;

@@ -1,6 +1,7 @@
 package metabase.db;
 
 import metabase.db.tables.Table;
+import metabase.db.tables.UserTable;
 import metabase.db.user.User;
 import metabase.exceptions.NoSuchTableError;
 
@@ -17,6 +18,8 @@ public class Database implements Serializable {
         this.owner = owner;
         this.name = name;
         this.path = path;
+        tables.add(new UserTable(this));
+
     }
 
     public static void saveDB(Database db, String path) throws IOException, ClassNotFoundException {
