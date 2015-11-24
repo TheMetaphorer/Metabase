@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <scm>
-        <connection>scm:git:file:///home/mayatta65/Desktop/Programming/Java/Metabase/.git</connection>
-        <url>file:///home/mayatta65/Desktop/Programming/Java/Metabase/.git</url>
+        <connection>scm:git:http://github.com/TheMetaphorer/Metabase.git</connection>
+        <url>http://github.com/TheMetaphorer/Metabase.git</url>
     </scm>
 
     <groupId>ga.dore</groupId>
