@@ -1,5 +1,6 @@
 package metabase.db;
 
+import metabase.db.rows.Row;
 import metabase.db.tables.Table;
 import metabase.db.tables.UserTable;
 import metabase.db.user.User;

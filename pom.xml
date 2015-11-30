@@ -10,7 +10,7 @@
 
     <groupId>ga.dore</groupId>
     <artifactId>Metabase</artifactId>
-    <version>0.1.4-alpha</version>
+    <version>0.2.2-alpha</version>
     <properties>
         <buildDirectory>${project.basedir}/Metabase builds/${project.version}/${project.build.finalName}</buildDirectory>
     </properties>
